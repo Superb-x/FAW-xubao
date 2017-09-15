@@ -10,11 +10,28 @@ let input = null;
 class Login extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            username: '',
+            password: ''
+        }
     }
 
     handleStyle() {
         document.getElementById("root").style.height = "100%";
         document.body.style.overflow = "hidden";
+    }
+
+    handleUserChange(e) {
+        this.setState({
+            username: e.target.value
+        })
+        console.log(this.state)
+    }
+
+    handlePwdChange(e) {
+        this.setState({
+            password: e.target.value
+        })
     }
 
     componentWillMount() {
@@ -41,7 +58,7 @@ class Login extends Component {
                                 <label htmlFor="">
                                     <i className={login.user + ' ' + icon.icon}></i>
                                 </label>
-                                <input type="text" ref={node => {input = node} }/>
+                                <input type="text" onChange={this.handleUserChange} ref={node => {input = node} }/>
                             </div>
                             <div className={login.input}>
                                 <label htmlFor="">
