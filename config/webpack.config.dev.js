@@ -34,36 +34,42 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader?modules&localIdentName=[local]-[hash:base64:5]', // 编译css文件的loader并开启css-modules功能
+                    {
+                        loader: 'style-loader'   //将JS代码生成style标签插入到head标签中
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            localIdentName: '[local]-[hash:base64:6]'   //也可以用快捷方法，直接将参数放在'?'后面
+                        }
+                    }
                 ],
                 exclude: /node_modules/
-            },
-            {
-                test: /\.less$/,
-                exclude: /node_modules/,
-                use: [
-                    'style-loader',
-                    'css-loader?&modules&localIdentName=[local]-[hash:base64:5]', // 编译less文件的loader并开启css-modules功能
-                    'less-loader'
-                ],
             },
             {
                 test: /\.(scss|sass)/,
                 exclude: /node_modules/,
                 use: [
                     'style-loader',
-                    'css-loader?&modules&localIdentName=[local]-[hash:base64:5]',
+                    'css-loader?&modules&localIdentName=[local]-[hash:base64:6]', //参数直接写在行内，当然也可以单独抽取出来
                     'sass-loader'
                 ]
             },
             {
                 test: /\.(jpe?g|png|gif|mp4|webm|otf|webp)$/,
-                use: ['url-loader?limit=10240']
+                loader: 'url-loader',
+                query: {
+                    limit: 10240,
+                    name: 'img/[name].[ext]'   //可以参考Vue脚手架的配置
+                }
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: 'url-loader?limit=10000'
+                loader: 'url-loader',
+                query: {
+                    limit: 10000
+                }
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
