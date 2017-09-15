@@ -1,0 +1,1 @@
+export const TOGGLE_ROLE = 'TOGGLE_ROLE' //三种角色切换
