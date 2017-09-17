@@ -63,7 +63,6 @@ class Login extends Component {
     }
 
     render() {
-        const _this = this
         return (
             <div className={login.wrap}>
                 <div className={login.top}>
