@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
     BrowserRouter as Router,
-    Route
+    Route,
 } from 'react-router-dom'
 import "@/style/app.scss"
 // components
+import Home from '@/containers/Home'
 import Login from '@/containers/Login'
 import * as actions from '@/actions/auth'
 
@@ -22,11 +23,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 class App extends Component {
     constructor(props){
         super(props)
-        console.log(props)
     }
     render() {
         return (
-            <Route path="/" component={Login}></Route>
+            <div style={this.props.router.location.pathname==="/login"?{height: "100%"}:{}}>
+                <Route exact path="/" component={Home}></Route>
+                <Route path="/login" component={Login}></Route>
+            </div>
         )
     }
 }

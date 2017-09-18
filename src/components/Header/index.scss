@@ -1,0 +1,62 @@
+.wrap {
+    width: 100%;
+    height: 118px;
+    background: #fff;
+}
+.top {
+    height: 66px;
+    background: #fff;
+    .logo {
+        display: block;
+        width: 520px;
+        height: 66px;
+        float: left;
+        background: url("@/assets/img/logo.png") no-repeat;
+    }
+    .welcome{
+        float: right;
+        height: 66px;
+        line-height: 66px;
+        padding-right: 52px;
+    }
+}
+.bottom {
+    width: 100%;
+    height: 52px;
+    background: #2a5298;
+    .center{
+        width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+    }
+    li {
+        float: left;
+        a {
+            display: inline-block;
+            height: 52px;
+            line-height: 52px;
+            padding: 0 17px 0 10px;
+        }
+    }
+    .nav {
+        float: left;
+        width: 50%;
+        a {
+            color: #fff;
+        }
+    }
+    .sys {
+        float: right;
+        width: 50%;
+        li {
+            float: right;
+        }
+    }
+}
+.iconindex {
+    height: 18px;
+    width: 19px;
+    background-position: -286px 0;
+    position: relative;
+    top: -2px;
+}

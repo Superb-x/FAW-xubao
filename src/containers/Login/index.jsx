@@ -62,6 +62,11 @@ class Login extends Component {
         this.handleStyle()
     }
 
+    componentWillUnmount() {
+        document.getElementById("root").style.height = "auto";
+        document.body.style.overflow = "";
+    }
+
     render() {
         return (
             <div className={login.wrap}>
