@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
     Link
 } from 'react-router-dom'
 import PropTypes from 'prop-types';
@@ -25,7 +24,7 @@ class Header extends Component {
                         <ul className={header.nav}>
                             <li><i className={header.iconindex+ ' ' + icon.icon}></i><Link to="/">首页</Link></li>
                             <li><Link to="/login">线索</Link></li>
-                            <li><Link to="/">KPI考核</Link></li>
+                            <li><Link to="/about">KPI考核</Link></li>
                         </ul>
                         <ul className={header.sys}></ul>
                     </div>

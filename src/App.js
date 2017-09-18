@@ -4,11 +4,13 @@ import { bindActionCreators } from 'redux'
 import {
     BrowserRouter as Router,
     Route,
+    withRouter
 } from 'react-router-dom'
 import "@/style/app.scss"
 // components
 import Home from '@/containers/Home'
 import Login from '@/containers/Login'
+import About from '@/components/About'
 import * as actions from '@/actions/auth'
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,8 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     actions: bindActionCreators({...actions}, dispatch)
 })
 
-@connect(mapStateToProps, mapDispatchToProps)
-class App extends Component {
+class App extends withRouter {
     constructor(props){
         super(props)
     }
@@ -29,9 +30,10 @@ class App extends Component {
             <div style={this.props.router.location.pathname==="/login"?{height: "100%"}:{}}>
                 <Route exact path="/" component={Home}></Route>
                 <Route path="/login" component={Login}></Route>
+                <Route path="/about" component={About}></Route>
             </div>
         )
     }
 }
 
-export default App
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

@@ -41,7 +41,7 @@ class Login extends Component {
     }
     
     handleActiveChange(i) {
-        console.log(i)
+
         this.setState({
             currendIndex: i
         })
@@ -64,7 +64,7 @@ class Login extends Component {
 
     componentWillUnmount() {
         document.getElementById("root").style.height = "auto";
-        document.body.style.overflow = "";
+        document.body.style.overflow = "hidden";
     }
 
     render() {
