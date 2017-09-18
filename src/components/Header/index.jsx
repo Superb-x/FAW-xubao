@@ -10,6 +10,17 @@ import header from './index.scss'
 class Header extends Component {
     constructor(props) {
         super(props)
+        this.handleEnter = this.handleEnter.bind(this)
+        this.handleLeave = this.handleLeave.bind(this)
+    }
+
+    handleEnter(e) {
+        console.log(this)
+
+    }
+
+    handleLeave() {
+        console.log(this)
     }
 
     render() {
@@ -22,11 +33,24 @@ class Header extends Component {
                 <div className={header.bottom}>
                     <div className={header.center}>
                         <ul className={header.nav}>
-                            <li><i className={header.iconindex+ ' ' + icon.icon}></i><Link to="/">首页</Link></li>
-                            <li><Link to="/login">线索</Link></li>
-                            <li><Link to="/about">KPI考核</Link></li>
+                            <li><Link to="/"><i className={header.iconindex+ ' ' + icon.icon}></i>首页</Link></li>
+                            <li><Link to="/login"><i className={header.iconlist+ ' '+icon.icon}></i>日跟进统计表</Link></li>
+                            <li><Link to="/about"><i className={header.kpi+' '+icon.icon}></i>KPI考核统计表</Link></li>
                         </ul>
-                        <ul className={header.sys}></ul>
+                        <ul className={header.sys}>
+                            <li><Link to="/logout"><i className={header.logout+' '+icon.icon}></i>退出</Link></li>
+                            <li><Link to="/logout"><i className={header.modifypwd+' '+icon.icon}></i>修改密码</Link></li>
+                            <li onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
+                                <Link to="/logout"><i className={header.setting+' '+icon.icon}></i>系统设置<i className={header.select+' '+icon.icon}></i></Link>
+                                <div className={header.sub} style={{display: 'block'}}>
+                                    <Link to="/" className={header.item}>你好</Link>
+                                    <Link to="/" className={header.item}>你好</Link>
+                                    <Link to="/" className={header.item}>你好</Link>
+                                    <Link to="/" className={header.item}>你好</Link>
+                                    <Link to="/" className={header.item}>你好</Link>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

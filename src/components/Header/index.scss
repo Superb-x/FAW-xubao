@@ -18,6 +18,7 @@
         height: 66px;
         line-height: 66px;
         padding-right: 52px;
+        font-size: 14px;
     }
 }
 .bottom {
@@ -31,19 +32,28 @@
     }
     li {
         float: left;
+        font-size: 16px;
+        position: relative;
         a {
             display: inline-block;
             height: 52px;
             line-height: 52px;
             padding: 0 17px 0 10px;
+            &:hover {
+                background: #5981ca;
+            }
         }
+    }
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    i {
+        margin: 0 9px;
     }
     .nav {
         float: left;
         width: 50%;
-        a {
-            color: #fff;
-        }
     }
     .sys {
         float: right;
@@ -56,7 +66,51 @@
 .iconindex {
     height: 18px;
     width: 19px;
-    background-position: -286px 0;
+    background-position: -305px 0;
     position: relative;
     top: -2px;
+}
+.iconlist {
+    height: 20px;
+    width: 21px;
+    background-position: -487px 0;
+}
+.kpi {
+    height: 16px;
+    width: 20px;
+    background-position: -384px 0;
+}
+.logout {
+    height: 15px;
+    width: 15px;
+    background-position: -187px 0;
+}
+.modifypwd{
+    height: 16px;
+    width: 12px;
+    background-position: -54px 0;
+}
+.setting{
+    height: 15px;
+    width: 15px;
+    background-position: -187px 0;
+}
+.select{
+    height: 5px;
+    width: 8px;
+    background-position: 0 0;
+}
+// 子菜单
+.sub{
+    display: none;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    .item {
+        display: block;
+        background: #2a5298;
+        border-top: 1px solid #375fa6;
+        border-bottom: 1px solid #204485;
+        text-align: center;
+    }
 }

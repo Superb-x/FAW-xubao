@@ -21,9 +21,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     actions: bindActionCreators({...actions}, dispatch)
 })
 
-class App extends withRouter {
+class App extends Component {
     constructor(props){
         super(props)
+        console.log(this.props, 123)
     }
     render() {
         return (
