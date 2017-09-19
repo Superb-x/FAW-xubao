@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
     Route,
@@ -7,11 +7,21 @@ import {
     withRouter
 } from 'react-router-dom'
 // components
+import App from '../App'
 import Home from '@/containers/Home'
-import About from '@/components/About'
+import Login from '@/containers/Login'
 
-const ROUTES = (
-    <Route exact path="/" component={Home}></Route>
-)
+class CRouter extends Component {
+    render() {
+        return(
+            <div>
+                <Route path="/" component={App}></Route>
+                <Route path="/" exact component={Home}></Route>
+                <Route path="login" component={Login}></Route>
+            </div>
+        )
+    }
+}
 
-export default ROUTES
+export default CRouter
+

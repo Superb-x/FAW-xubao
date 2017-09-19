@@ -10,6 +10,10 @@ import home from './index.scss'
 
 //components
 import Header from '@/components/Header'
+import About from '@/components/About'
+import Mainboard from '@/components/Dashboard'
+import Crumb from '@/components/Crumb'
+
 
 class Home extends Component {
     constructor(props){
@@ -20,6 +24,9 @@ class Home extends Component {
         return(
             <div className={home.wrap}>
                 <Header name="刘祥麟" role="1"/>
+                <Crumb />
+                <Route exact path="/home" component={Mainboard}/>
+                <Route path="/home/about" component={About}/>
             </div>
         )
     }

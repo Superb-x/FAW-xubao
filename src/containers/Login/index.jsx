@@ -9,6 +9,8 @@ import * as actions from '@/actions/auth'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import axios from 'axios'
+
 const mapStateToProps = (state, ownProps) => {
     return state
 }
@@ -22,8 +24,9 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '刘祥麟',
+            username: '',
             password: '',
+            error: '',
             role: [
                 {id:0, name: '厂商'},
                 {id:1, name: '经销商'},
@@ -33,6 +36,7 @@ class Login extends Component {
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleActiveChange = this.handleActiveChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleStyle() {
@@ -57,6 +61,20 @@ class Login extends Component {
         })
     }
 
+    handleSubmit(e) {
+        e.preventDefault()
+        console.log(this)
+        axios.post('http://xubao.faw.chenghx.com/Index/index/login', {
+            username: this.state.username,
+            password: this.state.password,
+            gid: 2
+        }).then((res) => {
+            console.log(res)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
     componentWillMount() {
         // 在钩子函数中设置样式
         this.handleStyle()
@@ -74,7 +92,7 @@ class Login extends Component {
                     <p className={login.logo}></p>
                 </div>
                 <div className={login.form}>
-                    <form action="" className={login.inputWrap}>
+                    <form onSubmit={this.handleSubmit} className={login.inputWrap}>
                         <h1>一汽集团续保业务管理系统</h1>
                         <div className={login.wrapper}>
                             <div className={login.nav}>
@@ -87,16 +105,16 @@ class Login extends Component {
                                 <label htmlFor="">
                                     <i className={login.user + ' ' + icon.icon}></i>
                                 </label>
-                                <input type="text" name="username" onChange={this.handleInputChange} />
+                                <input type="text" name="username" onChange={this.handleInputChange} required />
                             </div>
                             <div className={login.input}>
                                 <label htmlFor="">
                                     <i className={login.pwd + ' ' + icon.icon}></i>
                                 </label>
-                                <input type="text" name="password" onChange={this.handleInputChange} />
+                                <input type="text" name="password" onChange={this.handleInputChange} required />
                             </div>
                         </div>
-                        <p className={login.tips}>{this.state.username}</p>
+                        <p className={login.tips}>{this.state.error}</p>
                         <button type="submit">登录</button>
                     </form>
                 </div>

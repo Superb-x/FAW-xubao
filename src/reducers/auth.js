@@ -1,7 +1,8 @@
-import {TOGGLE_ROLE} from '@/actions/type'
+import {TOGGLE_ROLE, LOGGIN_STATUS} from '@/actions/type'
 
 const initialState = {
-    role: 0
+    role: 0,
+    status: false
 }
 
 const auth = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 role: action.role
+            }
+        case LOGGIN_STATUS:
+            return {
+                ...state,
+                status: action.st
             }
         default:
             return state
