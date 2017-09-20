@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
-    Link
+    Link,
+    Redirect,
+    withRouter 
 } from 'react-router-dom'
 import login from './index.scss'
 import icon from '@/style/icon.scss'
@@ -9,7 +10,9 @@ import * as actions from '@/actions/auth'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import axios from 'axios'
+import fetch from '@/axios'
+import qs from 'qs'
+
 
 const mapStateToProps = (state, ownProps) => {
     return state
@@ -19,7 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     actions: bindActionCreators({...actions}, dispatch)
 })
 
-@connect(mapStateToProps, mapDispatchToProps)
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -45,7 +47,6 @@ class Login extends Component {
     }
     
     handleActiveChange(i) {
-
         this.setState({
             currendIndex: i
         })
@@ -63,15 +64,27 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        console.log(this)
-        axios.post('http://xubao.faw.chenghx.com/Index/index/login', {
+        fetch.post('/Index/index/login',qs.stringify({
             username: this.state.username,
             password: this.state.password,
-            gid: 2
-        }).then((res) => {
+            gid: this.state.currendIndex + 2
+        })).then((res) => {
             console.log(res)
+            if(res.data.code !== 200) {
+                this.setState({
+                    error: res.data.msg
+                })
+            } else {
+                this.props.actions.loginstatus(true);
+                this.props.actions.changename(res.data.data.username);
+                this.props.history.push('/home');
+                localStorage.setItem('userinfo', JSON.stringify(res.data.data))
+            }
         }).catch((err) => {
-            console.log(err)
+            console.log('error', err)
+            this.setState({
+                error: err.data.msg
+            })
         })
     }
 
@@ -111,7 +124,7 @@ class Login extends Component {
                                 <label htmlFor="">
                                     <i className={login.pwd + ' ' + icon.icon}></i>
                                 </label>
-                                <input type="text" name="password" onChange={this.handleInputChange} required />
+                                <input type="password" name="password" onChange={this.handleInputChange} required />
                             </div>
                         </div>
                         <p className={login.tips}>{this.state.error}</p>
@@ -123,4 +136,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))

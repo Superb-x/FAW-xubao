@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
+    Link,
     Route
 } from 'react-router-dom'
 import i from '@/style/icon.scss'
 import s from './index.scss'
-import axios from 'axios'
-
-const instance = axios.create({
-    baseURL: 'http://xubao.faw.chenghx.com',
-    timeout: 10000
-})
+import fetch from '@/axios'
+import qs from 'qs'
 
 class Mainboard extends Component {
     constructor(props){
         super(props)
-        console.log(this.props)
     }
 
     componentWillMount() {
-        instance.get('/Index/Vendor/index')
-             .then((res) => {
-                 console.log(res)
-             }) 
-             .catch((err) => {
-                 console.log(err)
-             })
+        fetch.get('/Index/Vendor/index')
+        .then((res) => {
+            console.log(res)
+        }) 
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     render() {
@@ -48,14 +43,14 @@ class Mainboard extends Component {
                     </div>
                 </div>
                 <div className={s.total}>
-                    <a href="/Public/data-follow-tongji-boss.html">
+                    <Link to="/">
                         <div>
                             <span className={s.num}>
                                 <em>0</em>
                             </span>
                             <span className={s.txt}>新增应续保量</span>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             </div>
         )

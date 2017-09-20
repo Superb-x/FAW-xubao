@@ -3,16 +3,17 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
+import s from './index.scss'
 
-class About extends Component {
+class Kpi extends Component {
     render() {
         return (
-            <div>
-                <h1>这是关于组件</h1>
+            <div className={s.main}>
+                <h1>KPI组件</h1>
                 <Link to="/">返回首页</Link>
             </div>
         )
     }
 }
 
-export default About
+export default Kpi

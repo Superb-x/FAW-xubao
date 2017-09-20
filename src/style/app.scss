@@ -3,3 +3,21 @@
     width: 100%;
     height: 100%;
 }
+
+:global(.fade-enter) {
+    opacity: 0.01;
+}
+
+:global(.fade-enter):global(.fade-enter-active) {
+    opacity: 1;
+    transition: opacity 100ms ease-in;
+}
+
+:global(.fade-exit) {
+    display: none;
+}
+
+:global(.fade-exit):global(.fade-exit-active) {
+    display: none;
+    transition: opacity 50ms ease-in;
+}

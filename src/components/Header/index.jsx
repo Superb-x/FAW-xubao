@@ -51,7 +51,7 @@ class Header extends Component {
                         <ul className={header.nav}>
                             <li><Link to="/home"><i className={header.iconindex+ ' ' + icon.icon}></i>首页</Link></li>
                             <li><Link to="/home/follow"><i className={header.iconlist+ ' '+icon.icon}></i>日跟进统计表</Link></li>
-                            <li><Link to="/home/about"><i className={header.kpi+' '+icon.icon}></i>KPI考核统计表</Link></li>
+                            <li><Link to="/home/kpi"><i className={header.kpi+' '+icon.icon}></i>KPI考核统计表</Link></li>
                         </ul>
                         <ul className={header.sys}>
                             <li><Link to="/logout"><i className={header.logout+' '+icon.icon}></i>退出</Link></li>
