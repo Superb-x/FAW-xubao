@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     role: 0,
-    status: false,
+    status: false,   // 可以在此处获取session中的token
     name: ''
 }
 
