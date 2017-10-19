@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     role: 0,
-    status: false,   // 可以在此处获取session中的token
+    status: !sessionStorage.getItem('userinfo')? false : true,
     name: ''
 }
 

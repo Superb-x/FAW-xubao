@@ -8,6 +8,4 @@ const fetch = axios.create({
     },
 })
 
-fetch.interceptors.request(function(){
-    console.log("请求开始")
-})
+export default fetch

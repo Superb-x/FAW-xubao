@@ -78,7 +78,8 @@ class Login extends Component {
                 this.props.actions.loginstatus(true);
                 this.props.actions.changename(res.data.data.username);
                 this.props.history.push('/home');
-                localStorage.setItem('userinfo', JSON.stringify(res.data.data))
+                // 将用户信息储存在session中，并以此做登录判断标志
+                sessionStorage.setItem('userinfo', JSON.stringify(res.data.data))
             }
         }).catch((err) => {
             console.log('error', err)
