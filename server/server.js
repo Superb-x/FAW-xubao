@@ -1,17 +1,19 @@
-const Koa = require("koa")
-const webpack = require("webpack")
-const webpackConfig = require("../config/webpack.config.dev")
-const hotMiddleware = require("./middleware/hotMiddleware")
-const devMiddleware = require("./middleware/devMiddleware")
-const path = require("path")
-const Router = require("koa-router")
-const fs = require("fs")   //文件模块，有点类似于Python的os，用来读取本地文件
-const serve = require("koa-static")
+const Koa = require("koa");
+const webpack = require("webpack");
+const webpackConfig = require("../config/webpack.config.dev");
+//const DashboardPlugin = require('webpack-dashboard/plugin');
+const hotMiddleware = require("./middleware/hotMiddleware");
+const devMiddleware = require("./middleware/devMiddleware");
+const path = require("path");
+const Router = require("koa-router");
+const fs = require("fs");   //文件模块，有点类似于Python的os，用来读取本地文件
+const serve = require("koa-static");
 
-const router = new Router()
-const app = new Koa()
-const compiler = webpack(webpackConfig)   //将webpack做编译器
+const router = new Router();
+const app = new Koa();
+const compiler = webpack(webpackConfig);   //将webpack做编译器
 
+// compiler.apply(new DashboardPlugin());
 //注册中间件
 app.use(devMiddleware(compiler, {
     noInfo: true,
