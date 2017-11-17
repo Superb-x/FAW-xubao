@@ -51,6 +51,22 @@ class Mainboard extends Component {
                             <span className={s.txt}>新增应续保量</span>
                         </div>
                     </Link>
+                    <Link to="/">
+                        <div>
+                            <span className={s.num}>
+                                <em>0</em>
+                            </span>
+                            <span className={s.txt}>新增应续保量</span>
+                        </div>
+                    </Link>
+                    <Link to="/">
+                        <div>
+                            <span className={s.num}>
+                                <em>0</em>
+                            </span>
+                            <span className={s.txt}>新增应续保量</span>
+                        </div>
+                    </Link>
                 </div>
             </div>
         )
