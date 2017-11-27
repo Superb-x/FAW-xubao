@@ -24,7 +24,7 @@ module.exports = {
     resolve: {
         modules: [path.join(__dirname, '../node_modules')], //优化webpack文件搜索范围
         mainFields: ['jsnext:main', 'main'], //优化支持tree-shaking的库
-        extensions: ['.web.js', '.jsx', '.js', '.json'],
+        extensions: ['.jsx', '.js', '.json', '.web.js'], // 优先引用哪种类型的文件
         alias: {
             "@": path.resolve(__dirname, '../src')
         }
