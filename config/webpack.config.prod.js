@@ -16,7 +16,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '../build'), //打包后的文件存储位置
-        publicPath: './static/', //此处上线部署再改，对应的是服务器上存储打包后文件的路径
+        publicPath: './', //此处上线部署再改，对应的是服务器上存储打包后文件的路径
         filename: 'static/js/[name].[chunkhash:5].js', //打包后的文件名
         chunkFilename: 'static/js/[name].[chunkhash:5].js'
     },
@@ -81,18 +81,32 @@ module.exports = {
             use: [{
                 loader: "url-loader",
                 options: {
-                    limit: "10240",
+                    limit: 10240,
                     name: "static/img/[name].[hash:5].[ext]"
                 }
             }]
         },
         {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            use: 'file-loader?outputPath=static/'
+            use: [
+                {
+                    loader: "file-loader",
+                    options: {
+                        name: "static/img/[name].[hash:5].[ext]"
+                    }
+                }
+            ]
         },
         {
             test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            use: 'file-loader?outputPath=static/'
+            use: [
+                {
+                    loader: "file-loader",
+                    options: {
+                        name: "static/img/[name].[hash:5].[ext]"
+                    }
+                }
+            ]
         }
         ],
     },
