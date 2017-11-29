@@ -15,10 +15,10 @@ module.exports = {
         ] //分离第三方库
     },
     output: {
-        filename: '[name].[chunkhash:5].js', //打包后的文件名
-        chunkFilename: '[name].[chunkhash:5].js',
         path: path.join(__dirname, '../build'), //打包后的文件存储位置
-        publicPath: '/' //此处上线部署再改，对应的是服务器上存储打包后文件的路径
+        publicPath: './static/', //此处上线部署再改，对应的是服务器上存储打包后文件的路径
+        filename: 'static/js/[name].[chunkhash:5].js', //打包后的文件名
+        chunkFilename: 'static/js/[name].[chunkhash:5].js'
     },
 
     resolve: {
@@ -78,7 +78,13 @@ module.exports = {
         },
         {
             test: /\.(jpe?g|png|gif|mp4|webm|otf|webp)$/,
-            use: ['url-loader?limit=10240?outputPath=static/']
+            use: [{
+                loader: "url-loader",
+                options: {
+                    limit: "10240",
+                    name: "static/img/[name].[hash:5].[ext]"
+                }
+            }]
         },
         {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -112,7 +118,7 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: (getPath) => {
-                return getPath('[name].[contenthash].css').replace('dist/js', 'css')
+                return getPath('static/css/[name].[contenthash].css')
             },
             allChunks: true
         }), //提取css文件
