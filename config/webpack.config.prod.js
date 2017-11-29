@@ -34,7 +34,7 @@ module.exports = {
 
     module: {
         rules: [{
-            test: /\.js$/,
+            test: /\.(js|jsx)$/,
             use: 'babel-loader', //编译js文件的loader,
             exclude: /node_modules/
         },
