@@ -55,9 +55,9 @@ class Header extends Component {
                         </ul>
                         <ul className={header.sys}>
                             <li><Link to="/logout"><i className={header.logout+' '+icon.icon}></i>退出</Link></li>
-                            <li><Link to="/logout"><i className={header.modifypwd+' '+icon.icon}></i>修改密码</Link></li>
+                            <li><Link><i className={header.modifypwd+' '+icon.icon}></i>修改密码</Link></li>
                             <li onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
-                                <Link to="/logout"><i className={header.setting+' '+icon.icon}></i>系统设置<i className={header.select+' '+icon.icon}></i></Link>
+                                <Link><i className={header.setting+' '+icon.icon}></i>系统设置<i className={header.select+' '+icon.icon}></i></Link>
                                 <Menu ref="menu" items={this.state.settings} />
                             </li>
                         </ul>
