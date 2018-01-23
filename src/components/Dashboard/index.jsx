@@ -51,7 +51,7 @@ class Mainboard extends Component {
                             <span className={s.txt}>新增应续保量</span>
                         </div>
                     </Link>
-                    <Link to="/">
+                    <Link to="/card/123">
                         <div>
                             <span className={s.num}>
                                 <em>0</em>

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     role: 0,
-    status: !sessionStorage.getItem('userinfo')? false : true,
+    status: 1,
     name: ''
 }
 

@@ -12,6 +12,8 @@ import "@/style/app.scss"
 // components
 import Home from '@/containers/Home'
 import Login from '@/containers/Login'
+import Card from '@/components/Card'
+import Header from '@/components/Header'
 import * as actions from '@/actions/auth'
 
 // const asyncComp = (location, cb) => {     // 按需加载组件可用此方法
@@ -37,16 +39,18 @@ class App extends Component {
             <div style={this.props.router.location.pathname==="/login"?{height: "100%"}:{}}>                
                 <Switch>
                     <Route path="/" exact render={() => (
-                        this.props.auth.status?(
+                        this.props.auth.status===1?(
                             <Redirect to="/home"/>
                         ):(
                             <Redirect to="/login"></Redirect>
                         )
                     )}/>
                     <Route path="/home" component={Home}></Route>
+                    <Route path="/header" component={Header}></Route>                    
+                    <Route path="/card/:cardid" component={Card}></Route>                    
                     <Route path="/login" component={Login}></Route>
                     <Route render={() => (
-                        <Redirect to="/login"/>    
+                        <Redirect to="/home"/>    
                     )}></Route>
                 </Switch>                          
             </div>

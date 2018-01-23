@@ -37,7 +37,6 @@ class Home extends Component {
         }
         console.log(this)
     }
-
     render() {
         return(
             <div className={home.wrap}>
