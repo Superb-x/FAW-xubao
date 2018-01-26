@@ -11,6 +11,19 @@ import qs from 'qs'
 class Mainboard extends Component {
     constructor(props){
         super(props)
+        this.state = {
+            count: 1
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(){
+        this.setState(function(prev, props){ //此处可以用箭头函数代替
+            console.log(prev, props); //此处的props指向的是当前组件的props
+            return {
+                count: prev.count+1
+            }
+        })
     }
 
     componentWillMount() {
@@ -67,6 +80,7 @@ class Mainboard extends Component {
                             <span className={s.txt}>新增应续保量</span>
                         </div>
                     </Link>
+                    <div onClick={this.handleClick}>点击测试</div>
                 </div>
             </div>
         )
